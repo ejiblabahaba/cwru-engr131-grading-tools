@@ -40,3 +40,15 @@ After running through the file acquisition process, simply run `python cheat.py 
 * *Argument 1 (required)*: Folder that all the files have been extracted to (see _File Acquisition_)
 * Argument 2: Threshold to use for file similarity in fractional form. (e.g. 0.9 for 90% similar)
 * Argument 3: Regexp for files to skip. For example if `neuron.m` is provided by the instructor, you can ignore it with a regex similar to `[nN]euron\.m`
+
+Derek's Windows Port
+-------------------------
+Many people can't run shell scripts in their main OS. I ported prepare.sh into a pure python script called prepare.py for Windows users.
+
+The usage steps are almost exactly the same as prepare.sh. The only difference is how you run the script:
+`python prepare.py [AssignmentFolder] [/path/to/students.txt]` (e.g. `python prepare.py HW3 students.txt`)
+If you don't want to limit the files to those in students.txt, pass in any invalid file path.
+
+Both prepare.py and cheat.py should work on windows and unix systems, in python 2 or 3. Of course, I don't see why you'd want to use a windows port on a unix system when you have a perfectly good shell script to use.
+
+A final caveat: python doesn't have built-in modules for handling multiple compression formats, so if you stumble upon a rar or 7z, for now you have to handle it yourself. Fortunately, prepare.py will indicate if an unfamiliar compression format is encountered.
