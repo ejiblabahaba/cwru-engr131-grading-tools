@@ -36,7 +36,7 @@ class Comparer:
                 b = [i for sublist in filter(None, [x.strip().split(" ") for x in open(j_path).readlines()]) for i in sublist]
                 similar = SequenceMatcher(None, a,b).ratio()
                 if similar >= threshold:
-                    print "Found {0} percent similarity in {1} {2}".format(similar,i_path,j_path)
+                    sys.stdout.write("Found {0} percent similarity in \r\n-{1}\r\n-{2}\r\n".format(similar*100,i_path,j_path))
 
     def run(self):
         for n,i in enumerate(self.case_ids):
